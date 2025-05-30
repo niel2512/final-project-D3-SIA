@@ -11,10 +11,31 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="icon" href="{{ asset('favicon.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+            /* Custom scrollbar (opsional, untuk estetika) */
+            ::-webkit-scrollbar {
+                width: 8px;
+                height: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 10px;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #cbd5e1; /* slate-300 */
+                border-radius: 10px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #94a3b8; /* slate-500 */
+            }
+            body {
+                font-family: 'Figtree', sans-serif; /* Atau font pilihan Anda */
+            }
+    </style>
 </head>
-<body class="font-sans antialiased bg-slate-500">
-    <div class="min-h-screen">
-        <nav class="bg-gray-100 border-b border-gray-200 shadow-sm">
+<body class="font-sans antialiased bg-slate-100 text-slate-800">
+    <div class="min-h-screen flex flex-col">
+        <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex">

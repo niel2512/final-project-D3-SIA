@@ -30,7 +30,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border border-gray-300">{{ $bank->kode_bank }}</td>
                             {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $bank->created_at->format('d M Y') }}</td> --}}
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-end border border-gray-300">
-                                <a href="{{ route('bank.edit', $bank) }}" class="inline-flex items-center px-4 py-2 bg-yellow-500 border border-transparent rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-yellow-600 transition ease-in-out duration-150 ml-2 text-white">Edit</a>
+                                <a href="{{ route('bank.edit', $bank) }}" class="inline-flex items-center px-4 py-2 bg-yellow-500 border border-transparent rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-yellow-600 transition ease-in-out duration-150 ml-2 text-white"><i class="fas fa-pencil-alt mr-1"></i>Edit</a>
                                 <form action="{{ route('bank.destroy', $bank->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus bank {{ addslashes($bank->nama_bank) }}? Tindakan ini tidak dapat diurungkan.');">
                                     @csrf
                                     @method('DELETE')
