@@ -1,61 +1,97 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Prediksi Financial Distress dengan Model Zmijewski
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📜 Deskripsi Proyek
 
-## About Laravel
+Proyek ini merupakan sebuah **Sistem Informasi untuk Menganalisis dan Memprediksi Potensi Kebangkrutan (Financial Distress)** pada perusahaan. Aplikasi ini dibangun sebagai syarat kelulusan program Diploma 3 (D3) Sistem Informasi Akuntansi.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Fokus utama dari aplikasi ini adalah implementasi **Model Zmijewski (X-Score)**, sebuah model statistik yang digunakan untuk memprediksi kemungkinan sebuah perusahaan mengalami kesulitan keuangan. Sistem ini memungkinkan pengguna untuk memasukkan data dari laporan keuangan perusahaan dan secara otomatis menghitung skor Zmijewski serta memberikan interpretasi hasilnya.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🔬 Model Zmijewski
 
-## Learning Laravel
+Aplikasi ini menggunakan model Zmijewski X-Score untuk menilai kesehatan finansial perusahaan. Model ini didasarkan pada tiga rasio keuangan utama:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Formula:**
+`X = -4.3 - 4.5(X1) + 5.7(X2) - 0.4(X3)`
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+* **X1 (Return On Assets / ROA):** `Laba Bersih / Total Aset`
+* **X2 (Debt Ratio / DAR):** `Total Hutang / Total Aset`
+* **X3 (Current Ratio):** `Aset Lancar / Hutang Lancar`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Interpretasi Hasil:**
+* Jika **X > 0**, perusahaan dikategorikan sebagai **Non-Financial Distress** (Sehat).
+* Jika **X < 0**, perusahaan dikategorikan sebagai **Financial Distress** (Berpotensi Bangkrut).
 
-## Laravel Sponsors
+## ✨ Fitur Utama
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+* **👤 Manajemen Pengguna:** Sistem autentikasi untuk mengamankan akses.
+* **🏢 Manajemen Data Perusahaan:** Mengelola daftar perusahaan yang akan dianalisis.
+* **🔢 Input Laporan Keuangan:** Form untuk memasukkan data-data kunci dari laporan keuangan (Total Aset, Total Hutang, Laba Bersih, Aset Lancar, Hutang Lancar).
+* **⚙️ Kalkulasi Otomatis:** Sistem secara otomatis menghitung rasio keuangan dan skor Zmijewski berdasarkan data yang diinput.
+* **📊 Hasil dan Interpretasi:** Menampilkan hasil skor dengan jelas beserta kesimpulan apakah perusahaan berada dalam kondisi *financial distress* atau tidak.
+* **🗂️ Riwayat Analisis:** Menyimpan dan menampilkan riwayat analisis yang pernah dilakukan.
 
-### Premium Partners
+## 🛠️ Teknologi yang Digunakan
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+* **Bahasa Pemrograman:** PHP 8+
+* **Framework:** Laravel 12
+* **Database:** MySQL
+* **Frontend:** Blade Engine & Tailwindcss
+* **Server Lokal:** XAMPP / Laragon / Laravel Herd
 
-## Contributing
+## ⚙️ Panduan Instalasi Lokal
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Berikut adalah langkah-langkah untuk menjalankan proyek ini di lingkungan pengembangan lokal Anda.
 
-## Code of Conduct
+#### 1. Prasyarat
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* Pastikan Anda sudah menginstal **Composer**.
+* Pastikan Anda sudah menginstal **PHP** (versi 8.1 atau lebih baru).
+* Pastikan Anda memiliki server database **MySQL**.
 
-## Security Vulnerabilities
+#### 2. Instalasi Proyek
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1.  **Clone Repositori**
+    Buka terminal atau Git Bash dan jalankan perintah berikut:
+    ```bash
+    git clone [https://github.com/niel2512/final-project-D3-SIA.git](https://github.com/niel2512/final-project-D3-SIA.git)
+    cd final-project-D3-SIA
+    ```
 
-## License
+2.  **Instal Dependensi PHP**
+    ```bash
+    composer install
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3.  **Salin File Environment**
+    Buat file `.env` dengan menyalin dari file contoh.
+    ```bash
+    cp .env.example .env
+    ```
+
+4.  **Generate Kunci Aplikasi**
+    Perintah ini penting untuk keamanan aplikasi Laravel.
+    ```bash
+    php artisan key:generate
+    ```
+
+5.  **Konfigurasi Database**
+    Buka file `.env` dan sesuaikan konfigurasi database Anda.
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=db_prediksi_zmijewski
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+    Pastikan Anda sudah membuat database kosong dengan nama yang sesuai.
+
+6.  **Jalankan Migrasi dan Seeder**
+    Perintah ini akan membuat semua struktur tabel dan mengisi data awal yang diperlukan (seperti data user admin).
+    ```bash
+    php artisan migrate --seed
+    ```
+---
+Proyek ini dibuat oleh **Nathaniel Yusuf Langelo** sebagai bagian dari pemenuhan Tugas Akhir program studi D3 Sistem Informasi Akuntansi.
