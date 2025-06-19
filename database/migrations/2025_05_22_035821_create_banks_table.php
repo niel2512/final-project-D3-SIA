@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('banks', function (Blueprint $table) {
             $table->id();
             $table->string('nama_bank');
-            $table->string('kode_bank')->unique(); // Kode Bank unik
+            $table->string('kode_bank')->unique();
             $table->timestamps();
         });
     }

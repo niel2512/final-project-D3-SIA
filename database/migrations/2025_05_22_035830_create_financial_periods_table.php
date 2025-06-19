@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('financial_periods', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bank_id')->constrained('banks')->onDelete('cascade');
-            $table->year('tahun'); // Tahun periode keuangan
+            $table->year('tahun');
 
             // Input dari pengguna
             $table->decimal('laba_bersih', 15, 2)->nullable();
@@ -30,7 +30,7 @@ return new class extends Migration
 
             // Hasil Model Zmijewski
             $table->decimal('z_score', 15, 5)->nullable();
-            $table->string('interpretasi')->nullable(); // "Bangkrut" atau "Sehat"
+            $table->string('interpretasi')->nullable();
 
             $table->timestamps();
 
